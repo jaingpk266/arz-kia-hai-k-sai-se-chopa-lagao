@@ -1,249 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ARZ KIA VIDEO</title>
-  <style>
-    body {
-      background: #18191a;
-      font-family: Arial, sans-serif;
-      color: #e4e6eb;
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-    }
-    .post {
-      background: #242526;
-      border-radius: 10px;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    }
-    .post-header {
-      display: flex;
-      align-items: center;
-      padding: 10px 15px;
-    }
-    .post-header img {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      margin-right: 10px;
-    }
-    .post-header .info {
-      display: flex;
-      flex-direction: column;
-    }
-    .post-header .name {
-      font-weight: bold;
-      color: #e4e6eb;
-    }
-    .post-header .hashtag {
-      color: #1877f2;
-      font-size: 13px;
-    }
-    .video-container {
-      position: relative;
-    }
-    video {
-      width: 100%;
-      border-radius: 10px 10px 0 0;
-    }
-    .live-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: red;
-      color: white;
-      font-weight: bold;
-      font-size: 14px;
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
-    .watching {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: rgba(0,0,0,0.7);
-      color: #fff;
-      font-size: 13px;
-      padding: 4px 8px;
-      border-radius: 4px;
-    }
-    .stats {
-      padding: 10px 15px;
-      border-bottom: 1px solid #3a3b3c;
-      display: flex;
-      justify-content: space-between;
-      font-size: 14px;
-      color: #b0b3b8;
-    }
-    .actions {
-      display: flex;
-      justify-content: space-around;
-      padding: 10px;
-      border-top: 1px solid #3a3b3c;
-    }
-    .action-btn {
-      flex: 1;
-      text-align: center;
-      color: #b0b3b8;
-      font-weight: bold;
-      padding: 8px 0;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .action-btn:hover {
-      background: #3a3b3c;
-    }
-    /* Ads Section Styling */
-    .banner-ads {
-      margin: 15px auto;
-      text-align: center;
-      max-width: 100%;
-    }
-    .banner-ads .ad-box {
-      margin: 10px 0; /* equal spacing between ads */
-    }
-    .banner-ads iframe {
-      max-width: 100% !important;
-      height: auto !important;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Random Video Player</title>
+
+<!-- Facebook Share (Preview Image) -->
+<meta property="og:title" content="Random Fun Video">
+<meta property="og:description" content="Watch random videos automatically!">
+<meta property="og:image" content="https://i.postimg.cc/MKzW8R9V/540438882-17884119495361900-4965795126878016424-n.webp">
+<meta property="og:type" content="video.movie">
+
+<style>
+body {
+  margin: 0;
+  background: #000;
+  overflow: hidden;
+}
+video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+</style>
+
 </head>
 <body>
-  <div class="post">
-    <!-- Profile Header -->
-    <div class="post-header">
-      <img src="https://i.pravatar.cc/100?img=15" alt="Profile" id="profilePic">
-      <div class="info">
-        <div class="name" id="profileName"></div>
-      </div>
-    </div>
 
-    <!-- Video Section -->
-    <div class="video-container">
-      <video autoplay muted controls id="postVideo"></video>
-      <div class="live-badge">🔴 LIVE</div>
-      <div class="watching" id="watchingCount">12.4k watching</div>
-    </div>
+<video id="videoPlayer" autoplay muted playsinline></video>
 
-    <!-- Stats -->
-    <div class="stats">
-      <span id="viewCount">27.8m views</span>
-      <span>Like 1.1k · 1.9k comments · 990 shares</span>
-    </div>
+<!-- Visit Counter Script -->
+<script id="_waumqu">var _wau = _wau || []; _wau.push(["tab", "vv4elermlr", "mqu", "left-middle"]);</script>
+<script async src="//waust.at/t.js"></script>
 
-    <!-- Action Buttons -->
-    <div class="actions">
-      <div class="action-btn">👍 Like</div>
-      <div class="action-btn">💬 Comment</div>
-      <div class="action-btn">↗️ Share</div>
-    </div>
+<script>
+const videos = [
+  "https://cdn.videy.co/r3gDIj3i1.mp4",
+  "https://cdn.videy.co/Ay14bzDv1.mp4",
+  "https://cdn.videy.co/0gsKWXzj1.mp4",
+  "https://cdn.videy.co/avxnlLMt1.mp4",
+  "https://cdn.videy.co/qsF5fyvi1.mp4",
+  "https://cdn.videy.co/SLIzUgME1.mp4",
+  "https://cdn.videy.co/ygYqjNac1.mp4",
+  "https://cdn.videy.co/dCEXhocS1.mp4",
+  "https://cdn.videy.co/yX0hgiLv1.mp4",
+  "https://cdn.videy.co/bfYo5l9r1.mp4",
+  "https://qu.ax/aMkmW.mp4",
+  "https://qu.ax/YCFt.mp4",
+  "https://qu.ax/MvitZ.mp4",
+  "https://cdn.videy.co/0JkMTKpz1.mp4",
+  "https://qu.ax/VRTx.mp4",
+  "https://cdn.videy.co/kM1k6bsn1.mp4",
+  "https://cdn.videy.co/rcbiR2bY1.mp4",
+  "https://cdn.videy.co/BXPx7WzY1.mp4",
+  "https://qu.ax/dvpcJ.mp4",
+  "https://cdn.videy.co/nY13ZkXt1.mp4",
+  "https://cdn.videy.co/wXK3I8E71.mp4",
+  "https://qu.ax/zdQUt.mp4",
+  "https://cdn.videy.co/59psuNoU1.mp4",
+  "https://qu.ax/SuUG.mp4",
+  "https://qu.ax/YUyBU.mp4",
+  "https://cdn.videy.co/uUSOJy5A1.mp4",
+  "https://cdn.videy.co/6j3io4yw1.mp4",
+  "https://cdn.videy.co/msHDqquZ1.mp4",
+  "https://qu.ax/osEKf.mp4",
+  "https://qu.ax/EEVoF.mp4",
+  "https://cdn.videy.co/gcWhEmgZ1.mp4",
+  "https://qu.ax/bakkX.mp4",
+  "https://cdn.videy.co/qCM1RliY1.mp4",
+  "https://cdn.videy.co/VnrWle5a1.mp4",
+  "https://cdn.videy.co/RzTPkrN9.mp4",
+  "https://cdn.videy.co/Vw2bD1Q91.mp4",
+  "https://cdn.videy.co/UheefRei1.mp4",
+  "https://qu.ax/ktxYg.mp4",
+  "https://cdn.videy.co/P8AZ5Dhc1.mp4",
+  "https://qu.ax/UqYLR.mp4",
+  "https://qu.ax/TXVTQ.mp4",
+  "https://cdn.videy.co/noM6BPdT1.mp4",
+  "https://qu.ax/qnnsv.mp4",
+  "https://qu.ax/gUbUo.mp4",
+  "https://cdn.videy.co/NtxgPOAb1.mp4"
+];
 
-    <!-- Ads Section -->
-    <div class="banner-ads">
-      <!-- First Ad -->
-      <div class="ad-box">
-        <script type="text/javascript">
-          atOptions = {
-            'key' : '340c1858bb6c862839ad7387fdd2a2be',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//embarrasspiled.com/340c1858bb6c862839ad7387fdd2a2be/invoke.js"></script>
-      </div>
+// Pick a random video
+const video = document.getElementById("videoPlayer");
+const randomVideo = videos[Math.floor(Math.random() * videos.length)];
+video.src = randomVideo;
 
-      <!-- Second Ad -->
-      <div class="ad-box">
-        <script id="_wausmw">
-          var _wau = _wau || [];
-          _wau.push(["dynamic", "27vrvb2j55", "smw", "c4302bffffff", "small"]);
-        </script>
-        <script async src="//waust.at/d.js"></script>
-      </div>
-    </div>
-  </div>
+// Redirect before finish (3 seconds earlier)
+video.addEventListener("timeupdate", function () {
+    if (video.duration - video.currentTime <= 3) {
+        window.location.href = "https://info.namsham.com/best-hospitals-in-singapore/?utm_source=MS&utm_medium=MSKinGs";
+    }
+});
+</script>
 
-  <script>
-    const videos = [
-      "https://cdn.videy.co/r3gDIj3i1.mp4",
-      "https://cdn.videy.co/Ay14bzDv1.mp4",
-      "https://cdn.videy.co/0gsKWXzj1.mp4",
-      "https://cdn.videy.co/avxnlLMt1.mp4",
-      "https://cdn.videy.co/qsF5fyvi1.mp4",
-      "https://cdn.videy.co/SLIzUgME1.mp4",
-      "https://cdn.videy.co/ygYqjNac1.mp4",
-      "https://cdn.videy.co/dCEXhocS1.mp4",
-      "https://cdn.videy.co/yX0hgiLv1.mp4",
-      "https://cdn.videy.co/bfYo5l9r1.mp4",
-      "https://qu.ax/aMkmW.mp4",
-      "https://qu.ax/YCFt.mp4",
-      "https://qu.ax/MvitZ.mp4",
-      "https://cdn.videy.co/0JkMTKpz1.mp4",
-      "https://qu.ax/VRTx.mp4",
-      "https://cdn.videy.co/kM1k6bsn1.mp4",
-      "https://cdn.videy.co/rcbiR2bY1.mp4",
-      "https://cdn.videy.co/BXPx7WzY1.mp4",
-      "https://qu.ax/dvpcJ.mp4",
-      "https://cdn.videy.co/nY13ZkXt1.mp4",
-      "https://cdn.videy.co/wXK3I8E71.mp4",
-      "https://qu.ax/zdQUt.mp4",
-      "https://cdn.videy.co/59psuNoU1.mp4",
-      "https://qu.ax/SuUG.mp4",
-      "https://qu.ax/YUyBU.mp4",
-      "https://cdn.videy.co/uUSOJy5A1.mp4",
-      "https://cdn.videy.co/6j3io4yw1.mp4",
-      "https://cdn.videy.co/msHDqquZ1.mp4",
-      "https://qu.ax/osEKf.mp4",
-      "https://qu.ax/EEVoF.mp4",
-      "https://cdn.videy.co/gcWhEmgZ1.mp4",
-      "https://qu.ax/bakkX.mp4",
-      "https://cdn.videy.co/qCM1RliY1.mp4",
-      "https://cdn.videy.co/VnrWle5a1.mp4",
-      "https://cdn.videy.co/RzTPkrN9.mp4",
-      "https://cdn.videy.co/Vw2bD1Q91.mp4",
-      "https://cdn.videy.co/UheefRei1.mp4",
-      "https://qu.ax/ktxYg.mp4",
-      "https://cdn.videy.co/P8AZ5Dhc1.mp4",
-      "https://qu.ax/UqYLR.mp4",
-      "https://qu.ax/TXVTQ.mp4",
-      "https://cdn.videy.co/noM6BPdT1.mp4",
-      "https://qu.ax/qnnsv.mp4",
-      "https://qu.ax/gUbUo.mp4",
-      "https://cdn.videy.co/NtxgPOAb1.mp4",
-    ];
-
-    const names = [
-      "Ali Khan", "Sara Malik", "John Doe", "Ayesha Noor",
-      "Hassan Raza", "Fatima Sheikh", "David Smith",
-      "Emma Johnson", "Omar Farooq", "Sophia Lee"
-    ];
-
-    // Random video
-    const videoElement = document.getElementById("postVideo");
-    const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-    videoElement.src = randomVideo;
-
-    // Redirect after video ends
-    videoElement.addEventListener("ended", function() {
-      window.location.href = "https://info.namsham.com/best-hospitals-in-singapore/?utm_source=MS&utm_medium=MSKinGs";
-    });
-
-    // Random watching count
-    const watchingElement = document.getElementById("watchingCount");
-    const randomWatching = (Math.random() * (50 - 5) + 5).toFixed(1);
-    watchingElement.innerText = `${randomWatching}k watching`;
-
-    // Random profile name
-    const profileNameElement = document.getElementById("profileName");
-    const randomName = names[Math.floor(Math.random() * names.length)];
-    profileNameElement.innerText = randomName;
-  </script>
 </body>
 </html>
