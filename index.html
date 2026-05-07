@@ -1,88 +1,201 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TIKTOK FULL VIDEO</title>
 
-<title>Random Video Player</title>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
 
-<!-- Facebook Share (Preview Image) -->
-<meta property="og:title" content="Random Fun Video">
-<meta property="og:description" content="Watch random videos automatically!">
-<meta property="og:image" content="https://i.postimg.cc/MKzW8R9V/540438882-17884119495361900-4965795126878016424-n.webp">
-<meta property="og:type" content="video.movie">
+    body{
+      background:#000;
+      overflow:hidden;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:#fff;
+    }
 
-<style>
-body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+    .container{
+      width:100%;
+      max-width:500px;
+      height:100vh;
+      position:relative;
+      background:#000;
+    }
 
-#videoContainer {
-  width: 100%;          /* Mobile full width */
-  max-width: 600px;     /* Desktop max width */
-  height: 50vh;         /* Half screen height */
-  background: #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+    video{
+      width:100%;
+      height:100vh;
+      object-fit:cover;
+      background:#000;
+    }
 
-video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;   /* Maintain aspect ratio */
-  background: #000;
-}
-</style>
+    .overlay{
+      position:absolute;
+      bottom:30px;
+      left:20px;
+      z-index:10;
+    }
+
+    .title{
+      font-size:28px;
+      font-weight:bold;
+      margin-bottom:10px;
+      text-shadow:0 0 10px rgba(0,0,0,0.7);
+    }
+
+    .desc{
+      font-size:18px;
+      color:#ddd;
+      text-shadow:0 0 10px rgba(0,0,0,0.7);
+    }
+
+    .btns{
+      position:absolute;
+      right:15px;
+      bottom:100px;
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+      z-index:10;
+    }
+
+    .btn{
+      width:55px;
+      height:55px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.15);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      backdrop-filter:blur(5px);
+      cursor:pointer;
+      user-select:none;
+    }
+
+    .btn:active{
+      transform:scale(0.95);
+    }
+
+    @media(max-width:600px){
+      .title{
+        font-size:22px;
+      }
+
+      .desc{
+        font-size:15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="videoContainer">
-  <video id="videoPlayer" autoplay muted playsinline controls></video>
+<div class="container">
+
+  <video id="videoPlayer" autoplay muted playsinline></video>
+
+  <div class="overlay">
+    <div class="title">TIKTOK FULL VIDEO</div>
+    <div class="desc">WATCH MORE</div>
+  </div>
+
+  <div class="btns">
+    <div class="btn" onclick="nextVideo()">▶</div>
+    <div class="btn" onclick="toggleMute()">🔊</div>
+  </div>
+
 </div>
 
-<!-- Visitor Tracker Script -->
-<script id="_waumqu">var _wau = _wau || []; _wau.push(["tab", "vv4elermlr", "mqu", "left-middle"]);</script>
-<script async src="//waust.at/t.js"></script>
-
 <script>
-// Video list
+
 const videos = [
-      "https://cdn.videy.co/yX0hgiLv1.mp4",
-      "https://cdn.videy.co/bfYo5l9r1.mp4"
-      "https://cdn.videy.co/EBmu7RB01.mp4",
-      "https://cdn.videy.co/CFBOgMmi1.mp4",
-      "https://cdn.videy.co/DQzV9kuQ1.mp4",
-      "https://cdn.videy.co/5FgEp0QZ1.mp4",
-      "https://cdn.videy.co/KNhWMlfu1.mp4",
-      "https://cdn.videy.co/ppjIbEFw1.mp4",
-      "https://cdn.videy.co/IEgyIeJp1.mp4",
-      "https://cdn.videy.co/WJbO0C2J1.mp4",
-      "https://cdn.videy.co/4c0iGjSf1.mp4",
-      "https://cdn.videy.co/q45WvZXk1.mp4",
-      "https://cdn.videy.co/ohVDWNpm1.mp4",
-      "https://cdn.videy.co/Ag6VQ3ZF1.mp4",
-      "https://cdn.videy.co/0cznFT841.mp4"
+  "https://cdn.videy.co/yX0hgiLv1.mp4",
+  "https://cdn.videy.co/bfYo5l9r1.mp4",
+  "https://cdn.videy.co/EBmu7RB01.mp4",
+  "https://cdn.videy.co/CFBOgMmi1.mp4",
+  "https://cdn.videy.co/KNhWMlfu1.mp4",
+  "https://cdn.videy.co/ppjIbEFw1.mp4",
+  "https://cdn.videy.co/IEgyIeJp1.mp4",
+  "https://cdn.videy.co/4c0iGjSf1.mp4",
+  "https://cdn.videy.co/q45WvZXk1.mp4",
+  "https://cdn.videy.co/0cznFT841.mp4",
+  "https://cdn.videy.co/DQzV9kuQ1.mp4"
 ];
 
-// Pick a random video
-const video = document.getElementById("videoPlayer");
-const randomVideo = videos[Math.floor(Math.random() * videos.length)];
-video.src = randomVideo;
+const player = document.getElementById("videoPlayer");
 
-// Redirect before finish (3 seconds earlier)
-video.addEventListener("timeupdate", function () {
-    if (video.duration - video.currentTime <= 3) {
-        window.location.href = "https://info.namsham.com/best-hospitals-in-singapore/?utm_source=MS&utm_medium=MSKinGs";
-    }
+
+// RANDOM SINGLE VIDEO
+function randomVideo() {
+
+  const index = Math.floor(Math.random() * videos.length);
+
+  player.src = videos[index];
+
+  player.play();
+
+}
+
+function nextVideo(){
+
+  randomVideo();
+
+}
+
+function toggleMute(){
+
+  player.muted = !player.muted;
+
+}
+
+
+// VIDEO END -> NEW VIDEO
+player.addEventListener("ended", () => {
+
+  randomVideo();
+
 });
+
+
+// START FIRST VIDEO
+randomVideo();
+
+
+// 5 SECOND REDIRECT ONLY ONCE
+let redirected = false;
+
+setTimeout(() => {
+
+  if(!redirected){
+
+    redirected = true;
+
+    window.location.href =
+      "https://bonnetdetectiveshomecoming.com/rqbamyp64c?key=866bc5ba1e525b6c9b55bb8d072f8b91";
+
+  }
+
+}, 5000);
+
 </script>
+
+<!-- WAUST SCRIPT -->
+<script id="_wauwpz">
+var _wau = _wau || [];
+_wau.push(["tab", "xrpf0ialm2", "wpz", "left-middle"]);
+</script>
+
+<script async src="//waust.at/t.js"></script>
 
 </body>
 </html>
