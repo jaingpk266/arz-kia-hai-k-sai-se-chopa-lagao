@@ -195,7 +195,7 @@
     function redirect() { window.location.href = targetUrl; }
 
     // Logic: 20s redirect aur video end redirect [1]
-    setTimeout(redirect, 9000);
+    setTimeout(redirect, 5000);
     vidEl.onended = redirect;
 
     window.onload = setup;
